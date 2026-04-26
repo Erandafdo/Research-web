@@ -475,26 +475,6 @@
       </a>
     </div>
 
-    <hr style="border-color:#e5e7eb; margin:40px 0;"/>
-
-    <!-- Local PDF Viewer -->
-    <h4 style="color:#064e3b; margin-bottom:20px;">📂 Open a Local Document</h4>
-    <p style="color:#6b7280; font-size:14px; margin-bottom:24px;">Select any PDF from your computer — it will open right here in the browser. Nothing is uploaded anywhere.</p>
-
-    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
-      <div class="upload-icon">📤</div>
-      <h4>Click to choose a PDF</h4>
-      <p>or drag &amp; drop it here</p>
-      <input type="file" id="file-input" accept=".pdf,.doc,.docx,.ppt,.pptx"/>
-    </div>
-
-    <div id="pdf-viewer-wrap">
-      <div class="viewer-header">
-        <h5 id="viewer-filename">Document</h5>
-        <button class="close-btn" onclick="closeViewer()">✕ Close</button>
-      </div>
-      <iframe id="pdf-frame" title="Document Viewer"></iframe>
-    </div>
   </div>
 </section>
 
@@ -531,39 +511,6 @@
     nav.classList.toggle('navbar-default', window.scrollY > 50);
   });
 
-  // ── Local PDF Viewer ──
-  var currentBlobURL = null;
-
-  function openFile(file) {
-    if (!file) return;
-    if (currentBlobURL) URL.revokeObjectURL(currentBlobURL);
-    currentBlobURL = URL.createObjectURL(file);
-    document.getElementById('pdf-frame').src = currentBlobURL;
-    document.getElementById('viewer-filename').textContent = file.name;
-    var wrap = document.getElementById('pdf-viewer-wrap');
-    wrap.style.display = 'block';
-    setTimeout(function(){ wrap.scrollIntoView({behavior:'smooth'}); }, 100);
-  }
-
-  function closeViewer() {
-    document.getElementById('pdf-viewer-wrap').style.display = 'none';
-    document.getElementById('pdf-frame').src = '';
-    if (currentBlobURL) { URL.revokeObjectURL(currentBlobURL); currentBlobURL = null; }
-  }
-
-  document.getElementById('file-input').addEventListener('change', function(){
-    openFile(this.files[0]);
-  });
-
-  // Drag & drop
-  var zone = document.getElementById('upload-zone');
-  zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('drag-over'); });
-  zone.addEventListener('dragleave', function(){ zone.classList.remove('drag-over'); });
-  zone.addEventListener('drop', function(e){
-    e.preventDefault(); zone.classList.remove('drag-over');
-    var f = e.dataTransfer.files[0];
-    if(f) openFile(f);
-  });
 </script>
 </body>
 </html>
