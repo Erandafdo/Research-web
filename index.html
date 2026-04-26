@@ -100,7 +100,84 @@
 
     /* ── Navbar ── */
     .navbar-brand { color:#064e3b !important; font-weight:800 !important; }
-    @media(max-width:768px){ .intro h1{ font-size:42px; } }
+    /* ══════════════════════════════
+       RESPONSIVE — all breakpoints
+       ══════════════════════════════ */
+
+    /* ── Tablet & below (≤992px) ── */
+    @media (max-width: 992px) {
+      .intro h1 { font-size: 52px; }
+      section { padding: 60px 0; }
+      .section-title { margin-bottom: 40px; }
+      #pdf-frame { height: 450px; }
+      .rq-grid { grid-template-columns: 1fr 1fr; }
+      .docs-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Mobile (≤768px) ── */
+    @media (max-width: 768px) {
+      /* Nav */
+      #menu { padding: 10px 15px; }
+      .navbar-brand { font-size: 18px !important; }
+
+      /* Hero */
+      .intro { padding: 100px 20px 60px; min-height: auto; }
+      .intro h1 { font-size: 38px; line-height: 1.2; }
+      .intro p  { font-size: 16px; }
+      .badge-row { gap: 8px; }
+      .badge-pill { font-size: 11px; padding: 5px 12px; }
+      .btn-custom { padding: 12px 24px; font-size: 14px; }
+
+      /* Sections */
+      section { padding: 50px 0; }
+      .section-title { margin-bottom: 30px; }
+      .section-title h2 { font-size: 26px; }
+      .section-title p { font-size: 15px; }
+
+      /* Research */
+      .rq-primary { padding: 20px; }
+      .rq-primary blockquote { font-size: 15px; }
+      .rq-grid { grid-template-columns: 1fr; gap: 16px; }
+      .rq-card { padding: 20px; }
+
+      /* Features */
+      .feature-box { padding: 20px 10px; margin-bottom: 20px; }
+      .feature-box i { width: 70px; height: 70px; line-height: 70px; font-size: 28px; }
+
+      /* Modules */
+      .module-card { padding: 20px; }
+
+      /* AI table — card layout on mobile */
+      .ai-table thead { display: none; }
+      .ai-table, .ai-table tbody, .ai-table tr, .ai-table td { display: block; width: 100%; }
+      .ai-table tr { background: #fff; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.07); overflow: hidden; }
+      .ai-table td { padding: 10px 14px; border-bottom: 1px solid #f0fdf4; font-size: 13px; }
+      .ai-table td:first-child { background: #059669; color: #fff; font-weight: 700; }
+      .ai-table td::before { content: attr(data-label); font-weight: 700; color: #065f46; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .ai-table td:first-child::before { display: none; }
+
+      /* Tech pills */
+      #tech .row > div { margin-bottom: 24px; }
+
+      /* Docs */
+      .docs-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .doc-card { padding: 16px 12px; }
+      .doc-card .doc-icon { font-size: 28px; }
+      .upload-zone { padding: 36px 20px; }
+      .upload-zone .upload-icon { font-size: 38px; }
+      #pdf-frame { height: 380px; }
+    }
+
+    /* ── Small phones (≤480px) ── */
+    @media (max-width: 480px) {
+      .intro h1 { font-size: 30px; }
+      .intro p  { font-size: 14px; }
+      .rq-grid  { grid-template-columns: 1fr; }
+      .docs-grid { grid-template-columns: 1fr; }
+      .section-title h2 { font-size: 22px; }
+      #pdf-frame { height: 300px; }
+      .ai-table td { font-size: 12px; }
+    }
   </style>
 </head>
 <body id="page-top" data-spy="scroll" data-target="#menu" data-offset="70">
@@ -292,27 +369,27 @@
         <tbody>
           <tr>
             <td><strong>Health Classifier</strong></td>
-            <td>Random Forest</td>
-            <td>Vitals analysis</td>
-            <td>Healthy, Infection, Dehydration, etc.</td>
+            <td data-label="Algorithm">Random Forest</td>
+            <td data-label="Purpose">Vitals analysis</td>
+            <td data-label="Output">Healthy, Infection, Dehydration, etc.</td>
           </tr>
           <tr>
             <td><strong>Diagnosis Classifier</strong></td>
-            <td>Gradient Boosting</td>
-            <td>Clinical insight</td>
-            <td>Bacterial Infection, Arthritis, etc.</td>
+            <td data-label="Algorithm">Gradient Boosting</td>
+            <td data-label="Purpose">Clinical insight</td>
+            <td data-label="Output">Bacterial Infection, Arthritis, etc.</td>
           </tr>
           <tr>
             <td><strong>Stress Detector</strong></td>
-            <td>OpenCV + Random Forest</td>
-            <td>Motion analysis (local)</td>
-            <td>Stress Probability % / Normal Behavior</td>
+            <td data-label="Algorithm">OpenCV + Random Forest</td>
+            <td data-label="Purpose">Motion analysis (local)</td>
+            <td data-label="Output">Stress Probability % / Normal Behavior</td>
           </tr>
           <tr>
             <td><strong>Nutrition Engine</strong></td>
-            <td>Rule-Based AI</td>
-            <td>Feeding optimisation</td>
-            <td>Morning/Evening KG split + Remarks</td>
+            <td data-label="Algorithm">Rule-Based AI</td>
+            <td data-label="Purpose">Feeding optimisation</td>
+            <td data-label="Output">Morning/Evening KG split + Remarks</td>
           </tr>
         </tbody>
       </table>
